@@ -1,6 +1,7 @@
 import React from 'react';
 import Calendar from '../Calendar';
 import { TodoState } from '../../interface';
+import List from '../List';
 
 class Todo extends React.Component<{}, TodoState> {
     constructor(props: {}) {
@@ -28,6 +29,7 @@ class Todo extends React.Component<{}, TodoState> {
         return (
             <div className='todo'>
                 <Calendar />
+                <List />
                 Todo
             </div>
         )

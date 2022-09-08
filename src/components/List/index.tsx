@@ -1,8 +1,12 @@
 import React from 'react'
+import NewItem from '../NewItem';
 
 const List = () => {
   return (
-    <div>index</div>
+    <div>
+      <NewItem />
+      List
+    </div>
   )
 }
 
