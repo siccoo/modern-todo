@@ -1,6 +1,6 @@
 ### Modern Web Todo from a Figma Design
 
-[figma design] (https://www.figma.com/community/file/967646705486639689) that focuses on simple and clean UI and intuitive UX.
+[Figma design](https://www.figma.com/file/KWiWAHWUL16FPjgCsmWWBy/Modern-To-Do-App?node-id=0%3A1) that focuses on simple and clean UI and intuitive UX.
 
 #### Requires:
 
