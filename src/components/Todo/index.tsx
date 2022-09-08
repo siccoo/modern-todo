@@ -1,4 +1,5 @@
 import React from 'react';
+import Calendar from '../Calendar';
 
 class Todo extends React.Component {
     constructor(props: {}) {
@@ -6,7 +7,10 @@ class Todo extends React.Component {
     }
     render() {
         return (
-            <div className='todo'>Todo</div>
+            <div className='todo'>
+                <Calendar />
+                Todo
+            </div>
         )
     }
 }

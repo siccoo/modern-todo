@@ -1,9 +1,19 @@
-import React from 'react'
+import './index.scss'
 
 const Calendar = () => {
-  return (
-    <div>index</div>
-  )
+    const now = new Date();
+    const today = {
+        month: now.toLocaleString("en-US", { month: 'short' }),
+        date: now.getDate(),
+    }
+
+    return (
+        <div className='calendar'>
+            <div>
+
+            </div>
+        </div>
+    )
 }
 
 export default Calendar
