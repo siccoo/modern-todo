@@ -1,0 +1,41 @@
+// VARIABLE COLOR
+$iconColor: #3d82eb;
+$whiteColor: #ffffff;
+// ************************
+
+.calendar {
+  display: flex;
+  flex-direction: row;
+
+  &__icon {
+    text-align: center;
+    text-transform: uppercase;
+
+    &__month {
+      background-color: $iconColor;
+      padding: 3px 6px;
+      border-radius: 6px 6px 0 0;
+      font-weight: bold;
+      font-size: 10px;
+      color: $whiteColor;
+    }
+
+    &__date {
+        border-bottom: 2px solid $iconColor;
+        border-left: 2px solid $iconColor;
+        border-right: 2px solid $iconColor;
+        border-radius: 0 0 6px 6px;
+        font-size: 12px;
+        font-weight: bold;
+        color: $iconColor;
+    }
+  }
+
+  &__label {
+    font-size: 28px;
+    margin: 0 0 0 20px;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+  }
+}

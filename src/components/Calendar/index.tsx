@@ -9,9 +9,11 @@ const Calendar = () => {
 
     return (
         <div className='calendar'>
-            <div>
-
+            <div className='calendar__icon'>
+                <div className='calendar__icon__month'>{today.month}</div>
+                <div className='calendar__icon__date'>{today.date}</div>
             </div>
+            <div className='calendar__label'>Today</div>
         </div>
     )
 }
