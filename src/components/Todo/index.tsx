@@ -38,13 +38,25 @@ class Todo extends React.Component<{}, TodoState> {
         }
     }
 
-    addNewItem({ newItem }: { newItem: string }) {
+    addNewItem({ newItems }: { newItems: string }) {
         const { newItemInput } = this
         if (!newItemInput) {
             return
         }
 
         const { completed, inProgress, removed } = this.state.items
+
+        inProgress.push(newItems)
+        this.setState({
+            items: {
+                completed,
+                inProgress,
+                removed
+            },
+            newItems: ''
+        })
+
+        newItemInput.value = ''
     }
 
     handleNewItemInputOnBlur(event: FocusEvent<HTMLInputElement>) {
@@ -52,6 +64,8 @@ class Todo extends React.Component<{}, TodoState> {
         if (!newItems) {
             return
         }
+
+        this.addNewItem({ newItems })
     }
 
     handleNewItemInputOnChange(event: ChangeEvent<HTMLInputElement>) {
