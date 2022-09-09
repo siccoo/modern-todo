@@ -13,13 +13,22 @@ const List = ({
   setNewItemInputRef: (element: HTMLInputElement | null) => void;
 }) => {
   return (
-    <div>
-      <NewItem 
-      handleNewItemInputOnBlur={handleNewItemInputOnBlur}
-      handleNewItemInputOnChange={handleNewItemInputOnChange}
-      handleNewItemInputOnKeyUp={handleNewItemInputOnKeyUp}
-      setNewItemInputRef={setNewItemInputRef}
-      />
+    <div className='list'>
+      <div className='list__inProgress'>
+        <NewItem
+          handleNewItemInputOnBlur={handleNewItemInputOnBlur}
+          handleNewItemInputOnChange={handleNewItemInputOnChange}
+          handleNewItemInputOnKeyUp={handleNewItemInputOnKeyUp}
+          setNewItemInputRef={setNewItemInputRef}
+        />
+      </div>
+      <div className='list__completed'>
+
+      </div>
+      <div className='list__removed'>
+
+      </div>
+
       List
     </div>
   )

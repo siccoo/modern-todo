@@ -74,7 +74,14 @@ class Todo extends React.Component<{}, TodoState> {
     }
 
     handleNewItemInputOnKeyUp(event: KeyboardEvent<HTMLInputElement>) {
+        const { newItems } = this.state;
+        const { key } = event;
+        const isEnterKeyPressed = key == 'Enter'
+        if (!newItems || !isEnterKeyPressed) {
+            return
+        }
 
+        this.addNewItem({ newItems })
     }
 
     setNewItemInputRef(element: HTMLInputElement | null) {
@@ -82,6 +89,7 @@ class Todo extends React.Component<{}, TodoState> {
     }
 
     render() {
+        
         return (
             <div className='todo'>
                 <Calendar />
