@@ -40,13 +40,19 @@ const ListNavigation = (
         </div>
       </div>
       <ul className='listnavigation__items'>
-{Object.getOwnPropertyNames(items).map(viewsName =>
-<li
-data-view
->
-
-</li>
-)}
+        {Object.getOwnPropertyNames(items).map(viewsName =>
+          <li
+            data-viewname={viewsName}
+            key={viewsName}
+            className={[
+              "listnavigation__items__name",
+              (selected == viewsName) && "listnavigation__items__name--selected"
+            ].filter(className => Boolean(className)).join(" ")
+            }
+          >
+            {viewsName === "inProgress" ? "in progress" : viewsName}
+          </li>
+        )}
       </ul>
     </div>
   )
