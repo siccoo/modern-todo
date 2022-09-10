@@ -41,7 +41,9 @@ const ListNavigation = (
       </div>
       <ul className='listnavigation__items'>
 {Object.getOwnPropertyNames(items).map(viewsName =>
-<li>
+<li
+data-view
+>
 
 </li>
 )}
