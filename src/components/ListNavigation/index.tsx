@@ -4,7 +4,8 @@ const ListNavigation = (
   {
     items,
     views,
-    handleListNavigationEllipsisClick
+    handleListNavigationEllipsisClick,
+    handleListNavigationItemClick,
   }: {
     items: {
       completed: (string | undefined)[];
@@ -16,10 +17,15 @@ const ListNavigation = (
       selected: string;
     },
     handleListNavigationEllipsisClick: (event: MouseEvent<HTMLDivElement>) => void;
+    handleListNavigationItemClick: (event: MouseEvent<HTMLLIElement>) => void;
   }) => {
   const { open, selected } = views
   return (
-    <div className='listnavigation'>
+    <div className={[
+      "listnavigation",
+      open && "listnavigation--open",
+    ].filter(className => Boolean(className)).join(" ")
+    }>
       <div
         className='listnavigation__ellipsis'
         onClick={handleListNavigationEllipsisClick}
@@ -49,6 +55,7 @@ const ListNavigation = (
               (selected == viewsName) && "listnavigation__items__name--selected"
             ].filter(className => Boolean(className)).join(" ")
             }
+            onClick={handleListNavigationItemClick}
           >
             {viewsName === "inProgress" ? "in progress" : viewsName}
           </li>
