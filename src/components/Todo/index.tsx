@@ -89,11 +89,19 @@ class Todo extends React.Component<{}, TodoState> {
     }
 
     render() {
-        
+
         return (
             <div className='todo'>
                 <Calendar />
                 <List
+                    items={{
+                        completed: [],
+                        inProgress: [],
+                        removed: []
+                    }} views={{
+                        open: false,
+                        selected: ''
+                    }}
                     handleNewItemInputOnBlur={this.handleNewItemInputOnBlur}
                     handleNewItemInputOnChange={this.handleNewItemInputOnChange}
                     handleNewItemInputOnKeyUp={this.handleNewItemInputOnKeyUp}
