@@ -35,7 +35,7 @@
         margin: 28px 0 0 0;
         padding: 0;
         background: $whiteColor;
-        box-shadow: 0px 2px 10px 1px rgba(0, 0, 0, 0.15);
+        box-shadow: 0px 2px 10px 1px $boxShadow;
         border-radius: 5px 0 5px 5px;
 
         &__name {
@@ -47,6 +47,41 @@
             font-size: 16px;
             color: $grayColor;
             border-bottom: 2px solid $borderBottomColor;
+
+            &--selected, 
+            &:hover.listnavigation__items__name--selected {
+                color: $iconColor;
+            }
+
+            &:hover {
+                color: $hoverColor;
+            }
+        }
+    }
+
+    &--open {
+        .listnavigation__ellipsis {
+            background: $whiteColor;
+            box-shadow: 0px 0px 6px 1px $boxShadow;
+            border-radius: 5px 5px 0px 0px;
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: -10px;
+                right: 0px;
+                width: 120%;
+                height: 10px;
+                background-color: $whiteColor;
+            }
+
+            &--hovered {
+                display: block;
+            }
+
+            &--default {
+                display: none;
+            }
         }
     }
 }
