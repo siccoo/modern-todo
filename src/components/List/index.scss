@@ -94,6 +94,54 @@
           outline: none;
         }
       }
+
+      &__remove {
+        padding: 0;
+        margin: -5px 0 0 10px;
+
+        &:hover &--default {
+          display: none;
+        }
+
+        &:hover &--hovered {
+          display: block;
+        }
+
+        &--hovered {
+          display: none;
+        }
+      }
+    }
+  }
+
+  &__removed {
+    &__item {
+      padding: 15px 20px 11px 20px;
+
+      &__restore {
+        padding: 0 5px;
+        cursor: pointer;
+
+        &:hover &--default {
+          display: none;
+        }
+
+        &:hover &--hovered {
+          display: block;
+        }
+
+        &--hovered {
+          display: none;
+        }
+      }
+
+      &__label {
+        flex: 2 1 0;
+        padding: 4px 0 2px 20px;
+        font-size: 18px;
+        color: $checkedLabelColor;
+        width: 100%;
+      }
     }
   }
 }
