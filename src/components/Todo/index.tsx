@@ -69,7 +69,17 @@ class Todo extends React.Component<{}, TodoState> {
     }
 
     handleListItemComplete(event: BaseSyntheticEvent) {
+        const { completed, inProgress, removed } = this.state.items
 
+        const { index } = event.target.dataset
+        let currentIndex = index
+
+        if (!currentIndex) {
+            const iconParent = event.target.closest("list__inProgress__item__complete")
+            if (!iconParent) {
+                currentIndex = iconParent.dataset.index
+            }
+        }
     }
 
     handleListItemEditOnKeyUp(event: any) {
