@@ -80,10 +80,38 @@ class Todo extends React.Component<{}, TodoState> {
                 currentIndex = iconParent.dataset.index
             }
         }
+
+        completed.push(inProgress[currentIndex])
+        this.setState({
+            items: {
+                completed,
+                inProgress,
+                removed,
+            }
+        })
     }
 
-    handleListItemEditOnKeyUp(event: any) {
+    handleListItemEditOnKeyUp(event: BaseSyntheticEvent & KeyboardEvent<HTMLInputElement>) {
+        const { index } = event.target.dataset
+        const { value } = event.target
+        const { completed, inProgress, removed } = this.state.items
 
+        inProgress[index] = value
+        this.setState({
+            items: {
+                completed,
+                inProgress,
+                removed,
+            }
+        })
+
+        const { key } = event
+        const isEnterKeyPressed = key === "Enter"
+        if (!isEnterKeyPressed) {
+            return
+        }
+
+        this.handleListItemComplete(event)
     }
 
     handleListItemRemove(event: any) {
@@ -146,7 +174,6 @@ class Todo extends React.Component<{}, TodoState> {
                     setListItemEditInputRef={this.setListItemEditInputRef}
                     setNewItemInputRef={this.setNewItemInputRef}
                 />
-                Todo
             </div>
         )
     }

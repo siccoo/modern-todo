@@ -85,7 +85,7 @@ const List = ({
             >
               <div className='list__inProgress__item__remove--default'>
                 <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="17.6776" cy="17.6777" r="11.5" transform="rotate(45 17.6776 17.6777)" fill="#EB3D3D" stroke="#EB3D3D" strokeWidth="2" />
+                  <circle cx="17.6776" cy="17.6777" r="11.5" transform="rotate(45 17.6776 17.6777)" fill="#ffffff" stroke="#EB3D3D" strokeWidth="2" />
                   <rect x="21.2131" y="12.9636" width="1.66667" height="11.6667" rx="0.833333" transform="rotate(45 21.2131 12.9636)" fill="#EB3D3D" />
                   <rect x="12.9636" y="14.1422" width="1.66667" height="11.6667" rx="0.833333" transform="rotate(-45 12.9636 14.1422)" fill="#EB3D3D" />
                 </svg>
