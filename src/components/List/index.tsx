@@ -1,6 +1,8 @@
 import { FocusEvent, KeyboardEvent, ChangeEvent, MouseEvent } from 'react';
 import NewItem from '../NewItem';
 
+import "./index.scss";
+
 const List = ({
   items,
   views,

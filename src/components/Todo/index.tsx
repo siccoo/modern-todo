@@ -75,7 +75,7 @@ class Todo extends React.Component<{}, TodoState> {
         let currentIndex = index
 
         if (!currentIndex) {
-            const iconParent = event.target.closest("list__inProgress__item__complete")
+            const iconParent = event.target.closest(".list__inProgress__item__complete")
             if (!iconParent) {
                 currentIndex = iconParent.dataset.index
             }
@@ -121,7 +121,7 @@ class Todo extends React.Component<{}, TodoState> {
         let currentIndex = index
 
         if (!currentIndex) {
-            const iconParent = event.target.closest("list__inProgress__item__remove")
+            const iconParent = event.target.closest(".list__inProgress__item__remove")
             if (!iconParent) {
                 currentIndex = iconParent.dataset.index
             }
@@ -137,8 +137,27 @@ class Todo extends React.Component<{}, TodoState> {
         })
     }
 
-    handleListItemRemovedRestore(event: any) {
+    handleListItemRemovedRestore(event: BaseSyntheticEvent) {
+        const { completed, inProgress, removed } = this.state.items
 
+        const { index } = event.target.dataset
+        let currentIndex = index
+
+        if (!currentIndex) {
+            const iconParent = event.target.closest(".list__removed__item__restore")
+            if (!iconParent) {
+                currentIndex = iconParent.dataset.index
+            }
+        }
+
+        removed.splice(currentIndex, 1)
+        this.setState({
+            items: {
+                completed,
+                inProgress,
+                removed,
+            }
+        })
     }
 
     handleNewItemInputOnBlur(event: FocusEvent<HTMLInputElement>) {
