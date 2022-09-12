@@ -35,8 +35,10 @@ const List = ({
   setListItemEditInputRef: (element: HTMLInputElement | null) => void;
   setNewItemInputRef: (element: HTMLInputElement | null) => void;
 }) => {
+  
   const { selected } = views;
   const { completed, inProgress, removed } = items;
+
   return (
     <div className='list'>
       <ul className={[
@@ -47,7 +49,7 @@ const List = ({
         {inProgress.map((item, index) => (
           <li
             className={[
-              "list__inProgress-item",
+              "list__inProgress__item",
               completed.includes(item) && "list__inProgress--completed",
               removed.includes(item) && "list__inProgress--removed"
             ].filter(className => Boolean(className)).join(" ")}
@@ -119,7 +121,7 @@ const List = ({
             className='list__completed__item'
             key={index}
           >
-            <div className='list__completed__item--check'>
+            <div className='list__completed__item__check'>
               <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="12.5" cy="12.5" r="12" fill="#4E4E4E" stroke="#4E4E4E" />
                 <path d="M6.25 12.4999L10.4167 16.6666" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
