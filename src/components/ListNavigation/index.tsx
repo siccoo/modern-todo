@@ -52,7 +52,7 @@ const ListNavigation = (
             key={viewsName}
             className={[
               "listnavigation__items__name",
-              (selected == viewsName) && "listnavigation__items__name--selected"
+              (selected === viewsName) && "listnavigation__items__name--selected"
             ].filter(className => Boolean(className)).join(" ")
             }
             onClick={handleListNavigationItemClick}

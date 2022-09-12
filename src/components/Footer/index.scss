@@ -1,0 +1,15 @@
+@import "../../variables"
+
+.footer {
+    margin: 40px 0;
+
+    a {
+        font-size: 12px;
+        color: $footerColor;
+        font-weight: bold;
+
+        &:hover {
+            color: $blackColor;
+        }
+    }
+}

@@ -1,8 +1,14 @@
-import React from 'react'
+import "./index.scss";
 
 const Footer = () => {
+  const today = new Date();
+
   return (
-    <div>index</div>
+    <div className="footer">
+      <a href="https://michaelchilaka.netlify.com">
+        {today.getFullYear()}. Michael Chilaka.
+      </a>
+    </div>
   )
 }
 

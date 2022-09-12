@@ -2,6 +2,7 @@ import React from 'react';
 import Calendar from '../Calendar';
 import { TodoState } from '../../interface';
 import List from '../List';
+import ListNavigation from '../ListNavigation';
 
 import { FocusEvent, KeyboardEvent, ChangeEvent, BaseSyntheticEvent } from 'react';
 
@@ -17,6 +18,8 @@ class Todo extends React.Component<{}, TodoState> {
         this.handleListItemEditOnKeyUp = this.handleListItemEditOnKeyUp.bind(this)
         this.handleListItemRemove = this.handleListItemRemove.bind(this)
         this.handleListItemRemovedRestore = this.handleListItemRemovedRestore.bind(this)
+        this.handleListNavigationEllipsisClick = this.handleListNavigationEllipsisClick.bind(this)
+        this.handleListNavigationItemClick = this.handleListNavigationItemClick.bind(this)
         this.handleNewItemInputOnBlur = this.handleNewItemInputOnBlur.bind(this)
         this.handleNewItemInputOnChange = this.handleNewItemInputOnChange.bind(this)
         this.handleNewItemInputOnKeyUp = this.handleNewItemInputOnKeyUp.bind(this)
@@ -160,6 +163,26 @@ class Todo extends React.Component<{}, TodoState> {
         })
     }
 
+    handleListNavigationEllipsisClick(event: BaseSyntheticEvent) {
+        const { open, ...rest } = this.state.views
+        this.setState({
+            views: {
+                open: true,
+                ...rest
+            }
+        })
+    }
+
+    handleListNavigationItemClick(event: BaseSyntheticEvent) {
+        const { viewsName } = event.target.dataset
+        this.setState({
+            views: {
+                open: false,
+                selected: viewsName,
+            }
+        })
+    }
+
     handleNewItemInputOnBlur(event: FocusEvent<HTMLInputElement>) {
         const { newItems } = this.state
         if (!newItems) {
@@ -177,7 +200,7 @@ class Todo extends React.Component<{}, TodoState> {
     handleNewItemInputOnKeyUp(event: KeyboardEvent<HTMLInputElement>) {
         const { newItems } = this.state;
         const { key } = event;
-        const isEnterKeyPressed = key == 'Enter'
+        const isEnterKeyPressed = key === 'Enter'
         if (!newItems || !isEnterKeyPressed) {
             return
         }
@@ -199,6 +222,12 @@ class Todo extends React.Component<{}, TodoState> {
         return (
             <div className='todo'>
                 <Calendar />
+                <ListNavigation
+                    items={items}
+                    views={views}
+                    handleListNavigationEllipsisClick={this.handleListNavigationEllipsisClick}
+                    handleListNavigationItemClick={this.handleListNavigationItemClick}
+                />
                 <List
                     items={items}
                     views={views}
