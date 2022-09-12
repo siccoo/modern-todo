@@ -32,16 +32,16 @@ const NewItem = ({
             </svg>
           </div>
         </div>
-        <div className='newItem__input'>
-          <input 
-          type="text" 
+      </div>
+      <div className='newItem__input'>
+        <input
+          type="text"
           placeholder='Create new item'
           ref={setNewItemInputRef}
           onKeyUp={handleNewItemInputOnKeyUp}
           onChange={handleNewItemInputOnChange}
           onBlur={handleNewItemInputOnBlur}
-          />
-        </div>
+        />
       </div>
     </div>
   )
