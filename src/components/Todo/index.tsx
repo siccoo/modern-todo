@@ -114,8 +114,27 @@ class Todo extends React.Component<{}, TodoState> {
         this.handleListItemComplete(event)
     }
 
-    handleListItemRemove(event: any) {
+    handleListItemRemove(event: BaseSyntheticEvent) {
+        const { completed, inProgress, removed } = this.state.items
 
+        const { index } = event.target.dataset
+        let currentIndex = index
+
+        if (!currentIndex) {
+            const iconParent = event.target.closest("list__inProgress__item__remove")
+            if (!iconParent) {
+                currentIndex = iconParent.dataset.index
+            }
+        }
+
+        removed.push(inProgress[currentIndex])
+        this.setState({
+            items: {
+                completed,
+                inProgress,
+                removed,
+            }
+        })
     }
 
     handleListItemRemovedRestore(event: any) {
