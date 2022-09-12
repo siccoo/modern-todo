@@ -3,20 +3,29 @@ import Calendar from '../Calendar';
 import { TodoState } from '../../interface';
 import List from '../List';
 
-import { FocusEvent, KeyboardEvent, ChangeEvent } from 'react';
+import { FocusEvent, KeyboardEvent, ChangeEvent, BaseSyntheticEvent } from 'react';
 
 class Todo extends React.Component<{}, TodoState> {
+    listItemEditInput: HTMLInputElement | null;
     newItemInput: HTMLInputElement | null;
+
 
     constructor(props: {}) {
         super(props)
 
+        this.handleListItemComplete = this.handleListItemComplete.bind(this)
+        this.handleListItemEditOnKeyUp = this.handleListItemEditOnKeyUp.bind(this)
+        this.handleListItemRemove = this.handleListItemRemove.bind(this)
+        this.handleListItemRemovedRestore = this.handleListItemRemovedRestore.bind(this)
         this.handleNewItemInputOnBlur = this.handleNewItemInputOnBlur.bind(this)
         this.handleNewItemInputOnChange = this.handleNewItemInputOnChange.bind(this)
         this.handleNewItemInputOnKeyUp = this.handleNewItemInputOnKeyUp.bind(this)
+
+        this.setListItemEditInputRef = this.setListItemEditInputRef.bind(this)
         this.setNewItemInputRef = this.setNewItemInputRef.bind(this)
         this.addNewItem = this.addNewItem.bind(this)
 
+        this.listItemEditInput = null
         this.newItemInput = null
 
         this.state = {
@@ -59,6 +68,22 @@ class Todo extends React.Component<{}, TodoState> {
         newItemInput.value = ''
     }
 
+    handleListItemComplete(event: BaseSyntheticEvent) {
+
+    }
+
+    handleListItemEditOnKeyUp(event: any) {
+
+    }
+
+    handleListItemRemove(event: any) {
+
+    }
+
+    handleListItemRemovedRestore(event: any) {
+
+    }
+
     handleNewItemInputOnBlur(event: FocusEvent<HTMLInputElement>) {
         const { newItems } = this.state
         if (!newItems) {
@@ -84,27 +109,31 @@ class Todo extends React.Component<{}, TodoState> {
         this.addNewItem({ newItems })
     }
 
+    setListItemEditInputRef(element: HTMLInputElement | null) {
+        this.listItemEditInput = element
+    }
+
     setNewItemInputRef(element: HTMLInputElement | null) {
         this.newItemInput = element
     }
 
     render() {
+        const { items, views } = this.state
 
         return (
             <div className='todo'>
                 <Calendar />
                 <List
-                    items={{
-                        completed: [],
-                        inProgress: [],
-                        removed: []
-                    }} views={{
-                        open: false,
-                        selected: ''
-                    }}
+                    items={items}
+                    views={views}
+                    handleListItemComplete={this.handleListItemComplete}
+                    handleListItemEditOnKeyUp={this.handleListItemEditOnKeyUp}
+                    handleListItemRemove={this.handleListItemRemove}
+                    handleListItemRemovedRestore={this.handleListItemRemovedRestore}
                     handleNewItemInputOnBlur={this.handleNewItemInputOnBlur}
                     handleNewItemInputOnChange={this.handleNewItemInputOnChange}
                     handleNewItemInputOnKeyUp={this.handleNewItemInputOnKeyUp}
+                    setListItemEditInputRef={this.setListItemEditInputRef}
                     setNewItemInputRef={this.setNewItemInputRef}
                 />
                 Todo
